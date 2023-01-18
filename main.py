@@ -11,7 +11,7 @@ def main():
     start_ticks = pygame.time.get_ticks()
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Space Warrior")
+    pygame.display.set_caption("Parkour Dino")
     background = pygame.image.load("img/bg_4_pixart.jpg").convert()
     background = pygame.transform.smoothscale(background, screen.get_size())
     dino = Dino(screen)
@@ -24,3 +24,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+exit()
