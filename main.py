@@ -1,28 +1,36 @@
 import pygame
 import controls
 from dino import Dino
+from road import Road
+from enemies import Enemies
 
 
-def main():
-    pygame.init()
-    FPS = 60
-    WIDTH = 800
-    HEIGHT = 600
-    start_ticks = pygame.time.get_ticks()
-    clock = pygame.time.Clock()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Parkour Dino")
-    background = pygame.image.load("img/bg_4_pixart.jpg").convert()
-    background = pygame.transform.smoothscale(background, screen.get_size())
-    dino = Dino(screen)
+class Game:
+    def __init__(self):
+        self.FPS = 60
+        self.WIDTH = 800
+        self.HEIGHT = 600
+        self.DEBUG = True
+        self.clock = pygame.time.Clock()
+        #self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT), pygame.SCALED | pygame.FULLSCREEN, vsync=1)
+        pygame.display.set_caption("Parkour Dino")
+        self.background = pygame.image.load("img/bg_5_pixart.png").convert()
+        self.background = pygame.transform.smoothscale(self.background, self.screen.get_size())
+        self.dino = Dino(self.screen, self.DEBUG)
+        self.road = Road(self.screen)
+        self.enemies = Enemies(self.screen, self.DEBUG)
 
-    while True:
-        controls.event_loop(dino)
-        controls.update(screen, background, dino)
-        clock.tick(FPS)
+    def run(self):
+        pygame.init()
+        while True:
+            controls.event_loop(self)
+            controls.update(self)
+            self.clock.tick(self.FPS)
 
 
 if __name__ == '__main__':
-    main()
+    app = Game()
+    app.run()
 
 exit()

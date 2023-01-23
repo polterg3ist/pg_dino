@@ -16,7 +16,7 @@ class Road:
         self.rect2.bottomleft = self.screen_rect.bottomright
 
         self.road_parts = [self.rect1, self.rect2]
-        self.road_speed = 1
+        self.road_speed = 5
 
     def output(self):
         self.screen.blit(self.image, self.rect1)
