@@ -26,7 +26,7 @@ def update(game):
     game.dino.output()
     game.enemies.update()
     game.enemies.spawn_enemy()
-    check_collisions(game)
+    #check_collisions(game)
     pygame.display.flip()
 
 

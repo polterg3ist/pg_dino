@@ -1,5 +1,5 @@
 import pygame
-from random import randint
+from random import uniform
 from cactus import Cactus
 from time import time
 from pygame.sprite import Group
@@ -23,10 +23,10 @@ class Enemies:
 
     def spawn_enemy(self):
         now = time()
-        delta = int(now - self.last)
+        delta = now - self.last
         print(now, delta)
         if delta >= self.wait_time:
             enemy = Cactus(self.screen, self.debug)
             self.enemies.add(enemy)
-            self.wait_time = randint(1, 3)
+            self.wait_time = uniform(1, 2.5)
             self.last = time()
